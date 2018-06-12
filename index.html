@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.12/howler.core.min.js"></script>
+	<script type="text/javascript" src="./assets/js/paper-full.js"></script>
+	<script type="text/javascript" src="./assets/js/app.js"></script>
+	<link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+	<script type="text/paperscript" canvas="myCanvas">
+		var data = {
+			a: {
+				sound: new Howl({
+					src: ['./assets/sounds/moon.mp3']
+				})
+			},
+			z: {
+				sound: new Howl({
+					src: ['./assets/sounds/bubbles.mp3']
+				})
+			},
+			e: {
+				sound: new Howl({
+					src: ['./assets/sounds/clay.mp3']
+				})
+			},
+			r: {
+				sound: new Howl({
+					src: ['./assets/sounds/confetti.mp3']
+				})
+			},
+			t: {
+				sound: new Howl({
+					src: ['./assets/sounds/corona.mp3']
+				})
+			},
+			q: {
+				sound: new Howl({
+					src: ['./assets/sounds/dotted-spiral.mp3']
+				})
+			},
+			s: {
+				sound: new Howl({
+					src: ['./assets/sounds/flash-1.mp3']
+				})
+			},
+			d: {
+				sound: new Howl({
+					src: ['./assets/sounds/flash-2.mp3']
+				})
+			},
+			f: {
+				sound: new Howl({
+					src: ['./assets/sounds/flash-3.mp3']
+				})
+			},
+			w: {
+				sound: new Howl({
+					src: ['./assets/sounds/glimmer.mp3']
+				})
+			},
+			x: {
+				sound: new Howl({
+					src: ['./assets/sounds/pinwheel.mp3']
+				})
+			},
+			c: {
+				sound: new Howl({
+					src: ['./assets/sounds/piston-1.mp3']
+				})
+			},
+			v: {
+				sound: new Howl({
+					src: ['./assets/sounds/prism-1.mp3']
+				})
+			},
+			t: {
+				sound: new Howl({
+					src: ['./assets/sounds/zig-zag.mp3']
+				})
+			},
+			i: {
+				sound: new Howl({
+					src: ['./assets/sounds/clap-loop.mp3']
+				})
+			},
+			h: {
+				sound: new Howl({
+					src: ['./assets/sounds/squiggle.mp3']
+				})
+			}
+		}
+
+
+
+
+
+		var circles=[]
+	
+		function onKeyDown(event) {
+			
+			var wW= view.size.width
+			var wH= view.size.height
+			var x=Math.random()*wW
+			var y=Math.random()*wH
+			var mycircle = new Path.Circle(new Point(x, y), 80)
+			mycircle.fillColor = 'rgb('+Math.random()*255+','+Math.random()*255+','+Math.random()*255+')'
+			circles.push(mycircle)
+			console.log(circles)
+			data[event.key].sound.play()
+
+
+		}
+				
+		function onFrame(event) {
+			for(var i = 0; i< circles.length;i++){
+				circles[i].fillColor.hue +=8;
+				circles[i].scale(0.99)
+				
+			}
+			
+		}
+		
+		
+		</script>
+	<title></title>
+</head>
+<body>
+
+<canvas id="myCanvas" resize></canvas>
+</body>
+</html>
